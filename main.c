@@ -1,54 +1,145 @@
+/*This code allows for encryption and decryption using a rotation cypher and a chosen key.
+When this code is run the user will be presented with a menu. The user needs to type the corresponding upper case letter and hit <enter>.
+The user will then be prompted to enter a string of text to be enncrypted/decrypted as well as to enter a number which is the key.
+The encryption and decryption process will be computed using ASCII characters.
+*/
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
 
 
 
-int main()
+int
+main ()
 {
 
-    char choice;
-    int A;
-    int B;
-    int C;
-    int D;//
 
-    printf("Type 'A' for ENCRYPTION using a rotation cipher \nType 'B' for DECRYPTION using a rotation cipher \nType 'C' for ENCRYPTION using a substitution cipher \nType 'D' for DECRYPTION using a substitution cipher \n");
-    scanf("%c" , &choice);
+char choice; //initialises the choice which can be made
 
-if(choice == 'A')
+int A; //Initialises choice A
+
+int B; //Initialises choice B
+
+int C; //Initialises choice C
+
+int D; //Initialises choice D
+
+printf
+    ("Type 'A' for ENCRYPTION using a rotation cipher \nType 'B' for DECRYPTION using a rotation cipher \nType 'C' for ENCRYPTION using a substitution cipher \nType 'D' for DECRYPTION using a substitution cipher \n");
+    //Printf function will print the menu to the console for the user to read
+scanf ("%c", &choice);
+    //
+
+if (choice == 'A')
+
     {
 
 
-    int rn; //rotation number
-    char text[124], mte; //mte (Message to Encrypt) made of 124 bytes
+
+int rn;		//rotation number
+      char text[1024], mte;	//mte (Message to Encrypt) made of 124 bytes
 
 
-        printf("Type your message to encrypt here:\n"); //will print the prompt to enter the message to encrypt
-        scanf("\n %[^\n]s" , text); // ^ used to scan or read a line of text from a standard input
-        printf("Enter an encryption number:\n");
-        scanf("%d", &rn);
+printf ("Type your message to encrypt here:\n");	//will print the prompt to enter the message to encrypt
+      scanf ("\n %[^\n]s", text);	// ^ used to scan or read a line of text from a standard input
+      printf ("Enter an encryption number:\n");
+
+scanf ("%d", &rn);
 
 
 
-int i;
-for(i = 0; text[i] != '\0'; ++i){
-mte = text[i]; //text to encrypt (tte)
 
-    if (mte >= 'A' && mte <= 'Z')
+int x;
+
+for (x = 0; text[x] != '\0'; ++x)
+	{
+
+mte = text[x];
+
+if (mte >= 'A' && mte <= 'Z')
+
+	    {
+
+mte = mte + rn;
+
+
+if (mte > 'Z')
+		{
+
+mte = mte - 'Z' + 'A' - 1;
+
+}
+
+text[x] = mte;
+
+}
+
+}
+
+printf ("The encrypted message is:\n%s", text);
+
+return 0;
+
+}
+
+
+
+
+if (choice == 'B')
     {
-        mte = mte + rn;
 
-        if(mte > 'Z'){
-        mte = mte - 'Z' + 'A' -1;
-        }
-    text[i] = mte;
+
+int rn;		//rotation number
+      char text[1024], mte;	//(char text [124]; initialises the string of text, mte (Message to Encrypt) made of 124 characters
+
+
+printf ("Type your message to decrypt here:\n");	//will print the prompt to enter the message to decrypt
+      scanf ("\n %[^\n]s", text);	// ^ used to scan or read a line of text from a standard input, [^\n] is used to detect white spaces
+      printf ("Enter the decryption number:\n");	//Used to inform the user to input the decryption number
+      scanf ("%d", &rn);
+
+int x;
+
+for (x = 0; text[x] != '\0'; ++x)
+	{
+
+mte = text[x];
+
+if (mte >= 'A' && mte <= 'Z')
+
+	    {
+
+mte = mte - rn;
+
+
+if (mte > 'Z')
+		{
+
+mte = mte + 'Z' - 'A' + 1;
+
+}
+
+text[x] = mte;
+
+}
+
+}
+
+printf ("The decrypted message is:\n%s", text);
+
+return 0;
+
+}
+
+if(choice == 'C'){
+
+    char alpha[26];
+
+    int x;
+
+for (x = 0; alpha[x] != '\0'; ++x)
+	{
 }
 }
-printf("The encrypted message is:\n%s" , text);
-    }
-
-
-
 return 0;
 }
