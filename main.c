@@ -112,7 +112,7 @@ if (mte >= 'A' && mte <= 'Z')
 mte = mte - rn;
 
 
-if (mte > 'Z')
+if (mte < 'A')
 		{
 
 mte = mte + 'Z' - 'A' + 1;
@@ -133,7 +133,17 @@ return 0;
 
 if(choice == 'C'){
 
+    char text[1024];
+
     char alpha[26];
+
+    printf("Type your message to encrypt here:\n");	//will print the prompt to enter the message to decrypt
+
+    scanf("\n %[^\n]s", text);	// ^ used to scan or read a line of text from a standard input, [^\n] is used to detect white spaces
+
+    printf("Enter the decryption number:\n");	//Used to inform the user to input the decryption number
+
+    scanf("\n %s", alpha);
 
     int x;
 
